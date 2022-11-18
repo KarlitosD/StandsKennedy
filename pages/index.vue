@@ -10,6 +10,7 @@ const handleSearch = () => {
 }
 
 useHead({ title: () => `StandsKennedy` })
+console.log(stands.value)
 </script>
 
 <template>
