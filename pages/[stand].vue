@@ -15,6 +15,6 @@ useHead({ title: () => `${stand.value.name} | Stand` })
         <button v-if="!isVoted(idCookie)" class="btn w-full" :class="[loading ? 'btn-primary-content loading' : 'btn-primary']" 
             @click="handleVote">Votar</button>
         <button v-else class="btn btn-primary border border-primary w-full"  disabled>Ya votaste</button>
-        <BtnShare />
+        <BtnShare @name="stand.name" />
     </main>
 </template>
