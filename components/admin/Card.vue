@@ -46,7 +46,7 @@ const deleteStand = async () => {
     <div class="w-fit scale-75">
         <div ref="container" class="flex flex-col w-fit justify-center text-center bg-transparent">
             <h1 class="text-4xl font-semibold text-stone-900 drop-shadow-sm bg-white">{{ props.name }}</h1>
-            <img v-if="qrcode" :src="qrcode.value" alt="Codigo QR del stand" width="350" />
+            <img v-if="qrcode" class="mx-auto" :src="qrcode.value" alt="Codigo QR del stand" width="350" />
             <div v-else class="w-10 h-10 text-transparent animate-spin border-r-2 border-r-white rounded-full">O</div>
         </div>
         <button class="btn btn-primary rounded-md w-full mt-3" @click="handleClick">Descargar</button>
