@@ -5,7 +5,7 @@ const props = defineProps({
 
 const handleShare = async () => {
     navigator.share({
-        title: `Vota por ${stand.value.name}`,
+        title: `Vota por ${props.name}`,
         text: "Vota por tu stand favorito",
         url: document.URL
     }).then(err => alert(err.message))
