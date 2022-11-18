@@ -1,4 +1,8 @@
 <script setup>
+const props = defineProps({
+    stand-name: String
+})
+
 const handleShare = async () => {
     navigator.share({
         title: `Vota por ${stand.value.name}`,
