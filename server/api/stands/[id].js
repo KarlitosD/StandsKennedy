@@ -13,6 +13,11 @@ const handlers = {
         const params = getRouterParams(event)
         await connection.execute("INSERT INTO stands_user VALUES (?, ?)", [params.id, clientId])
         return { message: "Voted" }
+    },
+    async DELETE(event){
+        const params = getRouterParams(event)
+        await connection.execute("DELETE FROM stands WHERE stands.id = ?", [params.id])
+        return { message: "Deleted" }
     }
 }
 

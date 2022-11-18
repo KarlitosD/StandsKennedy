@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@vueuse/integrations": "^9.5.0",
+    "html-to-image": "^1.10.8",
     "mysql2": "^2.3.3",
     "qrcode": "^1.5.1",
     "uid": "^2.0.1",
