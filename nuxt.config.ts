@@ -15,9 +15,9 @@ export default defineNuxtConfig({
       port: process.env.DATABASE_PORT
     },
   },
-  pwa: {
-    workbox: {
-      enabled: false
-    }
-  }
+  // pwa: {
+  //   workbox: {
+  //     enabled: false
+  //   }
+  // }
 });
