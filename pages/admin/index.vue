@@ -1,6 +1,6 @@
 <script setup>
 const password = ref("")
-const isAdmin = ref(true)
+const isAdmin = ref(false)
 const standName = ref("")
 const error = ref(null)
 const handleAdd = async () => {
@@ -54,7 +54,7 @@ const { data: stands, refresh } = await useFetch("/api/stands")
             <p class="text-2xl font-semibold mb-1">Entrar como admin</p>
             <label class="label max-w-md flex gap-4 my-4">
                 Contraseña
-                <input type="text" class="input input-bordered" placeholder="Contraseña" v-model="password" />
+                <input type="password" class="input input-bordered" placeholder="Contraseña" v-model="password" />
             </label>
             <button class="btn btn-primary w-full rounded-sm">Ingresar</button>
         </form>
