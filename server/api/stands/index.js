@@ -3,20 +3,14 @@ import { uid } from "uid"
 
 const handlers = {
     async GET(event){
-        const [rows] = await connection.query("SELECT * FROM stands")
-        console.log(rows)
-        return rows
+        const [stands] = await connection.query("SELECT * FROM stands")
+        return stands
     },
     async POST(event){
         
         const { name } = await readBody(event)
-        const newStand = { 
-            id: uid(3),
-            name,
-            votes: []
-        }
-        const res = await connection.execute(`INSERT INTO stands VALUES ('${newStand.id}', '${name}' );`)
-        console.log(res[0])
+        const newStand = { id: uid(3), name }
+        await connection.execute(`INSERT INTO stands VALUES (?, ? );`, [newStand.id,  name])
         return newStand
     }
 }

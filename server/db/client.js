@@ -1,17 +1,25 @@
+import mysql from "mysql2/promise"
 
-// }
-import mysql from 'mysql2/promise'
-
-// create the connection to database
 export let connection;
 (async () => {
-    connection = await mysql.createConnection(process.env.DATABASE_URL);
-    // connection.connect()
-    
-    // const [rows] = await connection.query(
-    //   `
-    //     select * from stands;
-    //   `,
-    // )
-    // console.log(rows)
+  const { db } = useRuntimeConfig()
+  connection = await mysql.createPool({
+    ...db,
+    connectionLimit: 10,
+  });
+
+  await connection.query(`
+    CREATE TABLE IF NOT EXISTS stands (
+        id varchar(10) NOT NULL,
+        NAME varchar(150) DEFAULT NULL
+        );
+    `)
+  await connection.query(`
+      CREATE TABLE IF NOT EXISTS stands_user (
+        standId varchar(10),
+        voted varchar(50),
+        PRIMARY KEY (standId, voted),
+        FOREIGN KEY (standId) REFERENCES stands(id)
+      )
+    `)
 })()

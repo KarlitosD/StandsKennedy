@@ -1,8 +1,7 @@
 <script setup>
 const { data: stands } = await useFetch("/api/stands/ranking")
-console.log(stands.value)
-const standsSorted = computed(() => [...stands.value].sort((a, b) => b.votes - a.votes))
 
+useHead({ title: "Ranking de los mejores stands" })
 </script>
 
 <template>
@@ -17,9 +16,9 @@ const standsSorted = computed(() => [...stands.value].sort((a, b) => b.votes - a
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="stand, index in standsSorted" :key="stand.standId">
+                <tr v-for="stand, index in stands" :key="stand.standId">
                     <td>{{ index + 1 }}</td>
-                    <td>{{ stand.NAME }}</td>
+                    <td>{{ stand.name }}</td>
                     <td>{{ stand.votes }}</td>
                 </tr>
             </tbody>

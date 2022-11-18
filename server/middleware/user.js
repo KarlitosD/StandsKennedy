@@ -5,7 +5,6 @@ export default defineEventHandler(event => {
     if (!clientId) {
         clientId = uid(10)
         setCookie(event, "id", clientId)
-        console.log(event.req.url)
     }
     event.context.clientId = clientId
 

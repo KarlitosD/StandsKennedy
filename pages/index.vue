@@ -4,10 +4,12 @@ const selectedStand = ref("")
 const openModal = ref(false)
 
 const handleSearch = () => {
-    const stand = stands.value.find(stand => stand.NAME === selectedStand.value)
-    console.log(stand)
+    if(!selectedStand.value) return
+    const stand = stands.value.find(stand => stand.name === selectedStand.value)
     navigateTo(`/${stand.id}`)
 }
+
+useHead({ title: () => `StandsKennedy` })
 </script>
 
 <template>
@@ -15,9 +17,9 @@ const handleSearch = () => {
         <div class="form-control my-2">
             <div class="input-group flex justify-center px-3">
                 <input list="ice-cream-flavors" class="input w-full input-bordered" id="ice-cream-choice"
-                    name="ice-cream-choice" placeholder="Buscar stand" v-model="selectedStand">
+                    name="ice-cream-choice" placeholder="Buscar stand" v-model="selectedStand" :autocomplete="stands.length > 0">
                 <datalist id="ice-cream-flavors">
-                    <option v-for="stand in stands" :value="stand.NAME" :key="stand.id" />
+                    <option v-for="stand in stands" :value="stand.name" :key="stand.id" />
                 </datalist>
                 <button class="btn btn-square border border-primary-content" @click="handleSearch">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"

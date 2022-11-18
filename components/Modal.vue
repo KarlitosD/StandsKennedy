@@ -15,7 +15,7 @@ const onDecode = text => {
 const closeModal = () => {
     navigator.mediaDevices.getUserMedia({ video: true })
         .then(stream => {
-            console.log(stram)
+            console.log(stream)
             stream.getTracks().forEach(track => track.stop())
         })
 }
