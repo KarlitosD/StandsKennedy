@@ -1,6 +1,5 @@
 <script setup>
 const { data: stands } = await useFetch("/api/stands/ranking")
-
 useHead({ title: "Ranking de los mejores stands" })
 </script>
 

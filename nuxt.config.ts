@@ -8,11 +8,12 @@ export default defineNuxtConfig({
   runtimeConfig: {
     adminPassword: process.env.ADMIN_PASSWORD,
     db: {
-      user: process.env.DATABASE_USER,
-      password: process.env.DATABASE_PASSWORD,
-      host: process.env.DATABASE_HOST,
-      database: process.env.DATABASE_NAME,
-      port: process.env.DATABASE_PORT
+      // user: process.env.DATABASE_USER,
+      // password: process.env.DATABASE_PASSWORD,
+      // host: process.env.DATABASE_HOST,
+      // database: process.env.DATABASE_NAME,
+      // port: process.env.DATABASE_PORT
+      url: process.env.DB_URL
     },
   },
   // pwa: {

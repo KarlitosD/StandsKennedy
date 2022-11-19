@@ -1,22 +1,21 @@
-import { connection } from "../../db/client.js"
-
+import { sql } from "@/server/db/client.js"
 
 const handlers = {
     async GET(event){
         const { stand } = event.context
         const params = getRouterParams(event)
-        const [votes] = await connection.execute("SELECT voted FROM stands_user WHERE standId = ?", [params.id])
-        return { ...stand, votes: votes.map(({ voted }) =>  voted) }
+        const votes = await sql`SELECT voted FROM stands_user WHERE standId = ${params.id}`
+        return { ...stand, votes: votes.map(({ voted }) => voted) }
     },
     async POST(event){
         const { clientId } = event.context
         const params = getRouterParams(event)
-        await connection.execute("INSERT INTO stands_user VALUES (?, ?)", [params.id, clientId])
+        await sql`INSERT INTO stands_user VALUES (${params.id}, ${clientId})`
         return { message: "Voted" }
     },
     async DELETE(event){
         const params = getRouterParams(event)
-        await connection.execute("DELETE FROM stands WHERE stands.id = ?", [params.id])
+        await sql`DELETE FROM stands WHERE stands.id = ${params.id}`
         return { message: "Deleted" }
     }
 }
@@ -24,7 +23,7 @@ const handlers = {
 export default defineEventHandler(async event => {
     const params = getRouterParams(event)
 
-    const [stands] = await connection.execute("SELECT * FROM stands WHERE id = ?", [params.id])
+    const stands = await sql`SELECT * FROM stands WHERE id = ${params.id}`
     if(stands.length < 1){
         return { error: "404" }
     }

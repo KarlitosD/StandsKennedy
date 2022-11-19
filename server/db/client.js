@@ -1,12 +1,12 @@
-import mysql from "mysql2/promise"
+// import mysql from "mysql2/promise"
 
-export let connection;
-(async () => {
-  const { db } = useRuntimeConfig()
-  connection = await mysql.createPool({
-    ...db,
-    connectionLimit: 10,
-  });
+// export let connection;
+// (async () => {
+  // const { db } = useRuntimeConfig()
+  // connection = await mysql.createPool({
+    // ...db,
+    // connectionLimit: 10,
+  // });
 
   // await connection.query(`
   //   CREATE TABLE IF NOT EXISTS stands (
@@ -22,4 +22,9 @@ export let connection;
   //       FOREIGN KEY (standId) REFERENCES stands(id)
   //     )
   //   `)
-})()
+// })()
+
+import postgres from 'postgres'
+
+const config = useRuntimeConfig()
+export const sql = postgres(config.db.url)

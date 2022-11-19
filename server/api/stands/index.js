@@ -1,16 +1,17 @@
-import { connection } from "@/server/db/client.js"
+import { sql } from "@/server/db/client.js"
 import { uid } from "uid"
 
 const handlers = {
     async GET(event){
-        const [stands] = await connection.query("SELECT * FROM stands")
+        // const [stands] = await connection.query("SELECT * FROM stands")
+        const stands = await sql`select * from stands`
         return stands
     },
     async POST(event){
         
         const { name } = await readBody(event)
         const newStand = { id: uid(3), name }
-        await connection.execute(`INSERT INTO stands VALUES (?, ? );`, [newStand.id,  name])
+        await sql`INSERT INTO stands VALUES (${newStand.id}, ${name})`
         return newStand
     }
 }

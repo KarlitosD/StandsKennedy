@@ -1,6 +1,6 @@
 <script setup>
 const props = defineProps({
-    stand-name: String
+    name: String
 })
 
 const handleShare = async () => {
