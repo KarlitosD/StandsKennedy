@@ -24,7 +24,7 @@ export default defineEventHandler(async event => {
     const params = getRouterParams(event)
 
     const stands = await sql`SELECT * FROM stands WHERE id = ${params.id}`
-    if(stands.length < 1){
+    if(stands?.length < 1){
         return { error: "404" }
     }
     event.context.stand = stands[0]

@@ -17,7 +17,7 @@ useHead({ title: () => `StandsKennedy` })
         <div class="form-control my-2">
             <div class="input-group flex justify-center px-3">
                 <input list="ice-cream-flavors" class="input w-full input-bordered" id="ice-cream-choice"
-                    name="ice-cream-choice" placeholder="Buscar stand" v-model="selectedStand" :autocomplete="stands.length > 0">
+                    name="ice-cream-choice" placeholder="Buscar stand" v-model="selectedStand" :autocomplete="stands?.length > 0">
                 <datalist id="ice-cream-flavors">
                     <option v-for="stand in stands" :value="stand.name" :key="stand.id" />
                 </datalist>

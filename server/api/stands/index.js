@@ -8,7 +8,6 @@ const handlers = {
         return stands
     },
     async POST(event){
-        
         const { name } = await readBody(event)
         const newStand = { id: uid(3), name }
         await sql`INSERT INTO stands VALUES (${newStand.id}, ${name})`
