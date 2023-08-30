@@ -1,0 +1,67 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "id": "ec54f0d5-db61-4002-92bc-5bb0a704e5fa",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "tables": {
+    "stands": {
+      "name": "stands",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "varchar(5)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "stands_user": {
+      "name": "stands_user",
+      "schema": "",
+      "columns": {
+        "standId": {
+          "name": "standId",
+          "type": "varchar(5)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "voted": {
+          "name": "voted",
+          "type": "varchar(12)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "stands_user_standId_voted": {
+          "name": "stands_user_standId_voted",
+          "columns": [
+            "standId",
+            "voted"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  }
+}

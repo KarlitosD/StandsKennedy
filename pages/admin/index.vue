@@ -1,8 +1,10 @@
-<script setup>
-const password = ref("")
-const isAdmin = ref(false)
-const standName = ref("")
-const error = ref(null)
+<script setup lang="ts">
+import { boolean } from 'drizzle-orm/mysql-core'
+
+const password = shallowRef("")
+const isAdmin = shallowRef(false)
+const standName = shallowRef("")
+const error = shallowRef("")
 const handleAdd = async () => {
     try {
         const newStand = await $fetch("/api/stands", {
@@ -12,20 +14,24 @@ const handleAdd = async () => {
         await refresh()
         alert("El nuevo stand fue creado, su id es: " + newStand.id)
     } catch (error) {
-        console.error(error.message)
+        
         alert("Hubo un error :(")
+        if(error instanceof Error){
+            console.error(error.message)
+        }
     }
     standName.value = ""
 }
 
 
 const handleEnter = async () => {
-    const res = await $fetch("/api/admin", {
+    const res = await $fetch<{ isAdmin: boolean}>("/api/admin", {
         method: "POST",
         body: {
             password: password.value
         }
     })
+
     if (res.isAdmin) error.value = "Contraseña incorrecta"
     password.value = ""
     isAdmin.value = res.isAdmin

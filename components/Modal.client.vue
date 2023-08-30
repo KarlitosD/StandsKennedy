@@ -1,12 +1,12 @@
-<script setup>
+<script setup lang="ts">
 import { StreamBarcodeReader } from "vue-barcode-reader";
 
-const loading = ref(true)
+const loading = shallowRef(true)
 const onLoaded = () => loading.value = false
-const onDecode = text => {
+const onDecode = async (text: string) => {
     try {
         const { pathname } = new URL(text)
-        navigateTo(pathname)
+        await navigateTo(pathname)
     } catch {
         alert("Codigo de barra no es una url valida")
     }
@@ -15,7 +15,6 @@ const onDecode = text => {
 const closeModal = () => {
     navigator.mediaDevices.getUserMedia({ video: true })
         .then(stream => {
-            console.log(stream)
             stream.getTracks().forEach(track => track.stop())
         })
 }

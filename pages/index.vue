@@ -1,27 +1,28 @@
-<script setup>
-const { data: stands } = await useFetch("/api/stands")
-const selectedStand = ref("")
-const openModal = ref(false)
+<script setup lang="ts">
+const { data: stands } = await useFetch<{ id: string; name: string }[]>("/api/stands")
+const selectedStand = shallowRef("")
+const openModal = shallowRef(false)
 
 const handleSearch = () => {
-    if(!selectedStand.value) return
+    if(!selectedStand.value || !stands.value) return
     const stand = stands.value.find(stand => stand.name === selectedStand.value)
+    if(!stand) return
     navigateTo(`/${stand.id}`)
 }
 
-useHead({ title: () => `StandsKennedy` })
+const needAutocomplete = stands.value ? stands?.value?.length > 0 : false 
+
+useHead({ title: `StandsKennedy` })
 </script>
 
 <template>
     <main class="h-5/6 pt-10">
         <div class="form-control my-2">
             <div class="input-group flex justify-center px-3">
-                <input list="ice-cream-flavors" class="input w-full input-bordered" id="ice-cream-choice"
-                    name="ice-cream-choice" placeholder="Buscar stand" v-model="selectedStand" :autocomplete="stands?.length > 0">
-                <datalist id="ice-cream-flavors">
-                    <option v-for="stand in stands" :value="stand.name" :key="stand.id" />
-                </datalist>
-                <button class="btn btn-square border border-primary-content" @click="handleSearch">
+                <input list="stands-names" class="input w-full input-bordered" id="ice-cream-choice"
+                    name="ice-cream-choice" placeholder="Buscar stand" v-model="selectedStand" :autocomplete="needAutocomplete ? 'on' : 'off'">
+                <DatalistStand v-if="stands" :stands="stands" />
+                <button role="button" class="btn btn-square border border-primary-content" @click="handleSearch" aria-label="search icon">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

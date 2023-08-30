@@ -1,14 +1,14 @@
-<script setup>
-const props = defineProps({
-    name: String
-})
+<script setup lang="ts">
+const props = defineProps<{
+    name: string
+}>()
 
 const handleShare = async () => {
     navigator.share({
         title: `Vota por ${props.name}`,
         text: "Vota por tu stand favorito",
         url: document.URL
-    }).then(err => alert(err.message))
+    }).catch((err) => alert(err.message))
 }
 </script>
 

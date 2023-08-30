@@ -6,23 +6,31 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "migrate": "drizzle-kit generate:pg && drizzle-kit push:pg",
+    "studio": "drizzle-kit studio",
+    "unlighthouse": "unlighthouse --site localhost:3000"
   },
   "devDependencies": {
-    "@nuxtjs/tailwindcss": "^6.6.5",
-    "@types/vue-barcode-reader": "^0.0.0",
-    "@vite-pwa/nuxt": "^0.0.7",
-    "@vueuse/core": "^9.13.0",
-    "@vueuse/integrations": "^9.13.0",
-    "@vueuse/nuxt": "^9.13.0",
-    "daisyui": "^2.51.5",
-    "nuxt": "^3.3.3"
+    "@nuxt/devtools": "latest",
+    "@nuxtjs/tailwindcss": "6.8.0",
+    "@types/vue-barcode-reader": "0.0.0",
+    "@vueuse/core": "10.4.1",
+    "@vueuse/nuxt": "10.4.1",
+    "daisyui": "3.6.4",
+    "drizzle-kit": "0.19.13",
+    "nuxt": "^3.7.0",
+    "pg": "8.11.3",
+    "unlighthouse": "0.10.0"
   },
   "dependencies": {
-    "html-to-image": "^1.11.11",
-    "postgres": "^3.3.4",
-    "qrcode": "^1.5.1",
-    "uid": "^2.0.2",
-    "vue-barcode-reader": "^1.0.3"
+    "@vueuse/integrations": "10.4.1",
+    "drizzle-orm": "0.28.5",
+    "html-to-image": "1.11.11",
+    "postgres": "3.3.5",
+    "uid": "2.0.2",
+    "uqr": "0.1.2",
+    "valibot": "0.13.1",
+    "vue-barcode-reader": "1.0.3"
   }
 }
