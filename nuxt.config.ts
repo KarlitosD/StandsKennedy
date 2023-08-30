@@ -2,7 +2,6 @@
 export default defineNuxtConfig({
   modules: [
     "@nuxtjs/tailwindcss",
-    "@vueuse/nuxt",
     // '@kevinmarrec/nuxt-pwa',
   ],
 
@@ -23,7 +22,6 @@ export default defineNuxtConfig({
     asyncEntry: true,
     writeEarlyHints: true,
     headNext: true,
-    // inlineSSRStyles: false
   },
 
   nitro: {
@@ -32,7 +30,7 @@ export default defineNuxtConfig({
       openAPI: true,
     },
     future: {
-      // nativeSWR: true
+      nativeSWR: true
     },
     routeRules: {
       "api/qrcode": { 
@@ -40,7 +38,7 @@ export default defineNuxtConfig({
         swr: 60 * 60
       },
       "not-found": { static: true },
-      // "ranking": { swr: 30 }
+      "ranking": { swr: 30 }
     }
   },
 
