@@ -13,21 +13,23 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
-    "@nuxtjs/tailwindcss": "6.8.0",
-    "@types/vue-barcode-reader": "0.0.0",
-    "daisyui": "3.6.4",
+    "@nuxtjs/tailwindcss": "6.12.1",
+    "@types/vue-barcode-reader": "0.0.3",
+    "daisyui": "3.9.4",
     "drizzle-kit": "0.19.13",
-    "nuxt": "^3.7.0",
-    "pg": "8.11.3",
-    "unlighthouse": "0.10.0"
+    "nuxt": "^3.12.4",
+    "pg": "8.11.6",
+    "unlighthouse": "0.13.2",
+    "vue": "^3.4.37",
+    "vue-router": "^4.4.3"
   },
   "dependencies": {
-    "drizzle-orm": "0.28.5",
+    "drizzle-orm": "0.28.6",
     "html-to-image": "1.11.11",
-    "postgres": "3.3.5",
+    "postgres": "3.4.4",
     "uid": "2.0.2",
     "uqr": "0.1.2",
-    "valibot": "0.13.1",
+    "valibot": "0.19.0",
     "vue-barcode-reader": "1.0.3"
   }
 }
