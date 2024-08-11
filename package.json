@@ -24,6 +24,7 @@
     "vue-router": "^4.4.3"
   },
   "dependencies": {
+    "bun": "^1.1.22",
     "drizzle-orm": "0.28.6",
     "html-to-image": "1.11.11",
     "postgres": "3.4.4",
