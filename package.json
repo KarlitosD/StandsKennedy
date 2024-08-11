@@ -2,10 +2,10 @@
   "name": "nuxt-app",
   "private": true,
   "scripts": {
-    "build": "nuxt build && npm run migrate",
+    "build": "nuxt build && bun run migrate",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "preview": "nuxt preview",
+    "preview": "bun run ./.output/server/index.mjs",
     "postinstall": "nuxt prepare",
     "migrate": "drizzle-kit generate:pg && drizzle-kit push:pg",
     "studio": "drizzle-kit studio",
